@@ -1,0 +1,60 @@
+{
+    "personal_info": {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "linkedin": "",
+        "github": ""
+    },
+    "work_experience": [
+        {
+            "company": "",
+            "position": "",
+            "start_date": "2020-01-01",
+            "end_date": null,
+            "responsibilities": [],
+            "achievements": []
+        }
+    ],
+    "education": [
+        {
+            "institution": "",
+            "degree": "",
+            "field_of_study": "",
+            "start_date": "2015-09-01",
+                        "end_date": "2019-06-30",
+            "description": ""
+        }
+    ],
+    "skills": [
+        {
+            "name": "",
+            "level": 3,
+            "category": "Technical"
+        }
+    ],
+    "languages": [
+        {
+            "name": "English",
+            "level": "Intermediate"
+        }
+    ],
+    "projects": [
+        {
+            "name": "",
+            "description": "",
+            "technologies": [],
+            "url": ""
+        }
+    ],
+    "certifications": [
+        {
+            "name": "",
+            "issuer": "",
+            "date": "",
+            "url": ""
+        }
+    ],
+    "template": "modern"
+}
