@@ -2,14 +2,74 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Резюме</title>
-    <style>/* CSS_STYLES */</style>
+    <title>{{ resume.personal_info.name }} - Резюме</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>{{name}}</h1>
-    <p>Email: {{email}}</p>
-    <p>Телефон: {{phone}}</p>
-    <h2>Опыт работы</h2>
-    {{experience}}
+    <div class="classic-resume">
+        <header class="header">
+            <h1>{{ resume.personal_info.name }}</h1>
+            <div class="contact-details">
+                {% if resume.personal_info.address %}<p>{{ resume.personal_info.address }}</p>{% endif %}
+                {% if resume.personal_info.email %}<p>{{ resume.personal_info.email }}</p>{% endif %}
+                {% if resume.personal_info.phone %}<p>{{ resume.personal_info.phone }}</p>{% endif %}
+            </div>
+        </header>
+
+        {% if resume.work_experience %}
+        <section class="experience-section">
+            <h2>Профессиональный опыт</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Должность</th>
+                        <th>Компания</th>
+                        <th>Период</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for exp in resume.work_experience %}
+                    <tr>
+                        <td>{{ exp.position }}</td>
+                        <td>{{ exp.company }}</td>
+                        <td>{{ utils.format_date_range(exp.start_date, exp.end_date) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+
+        {% if resume.education %}
+        <section class="education-section">
+            <h2>Образование</h2>
+            {% for edu in resume.education %}
+            <div class="education-item">
+                <h3>{{ edu.institution }}</h3>
+                <p>{{ edu.degree }} по {{ edu.field_of_study }}</p>
+                <p>{{ utils.format_date_range(edu.start_date, edu.end_date) }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if resume.skills %}
+        <section class="skills-section">
+            <h2>Навыки</h2>
+            <div class="skills-table">
+                {% for skill in resume.skills %}
+                <div class="skill-row">
+                    <span class="skill-name">{{ skill.name }}</span>
+                    <div class="skill-level">
+                        {% for i in range(5) %}
+                        <span class="star {% if i < skill.level %}filled{% endif %}">★</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
 </body>
 </html>
